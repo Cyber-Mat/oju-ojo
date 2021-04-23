@@ -1,23 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import LocationContext from '../utils/LocationContext';
 import { IoSearchOutline } from 'react-icons/io5';
-
 import './search.scss';
 
 const Search = () => {
   const ApiKey = process.env.REACT_APP_API_KEY;
-  const [location, setLocation] = useState({
-    city: '',
-  });
 
-  const [latLong, setLatLong] = useState({
-    latitude: '39.0481',
-    longitude: '-77.4728',
-    city: 'Ashburn',
-  });
+  const [location, setLocation] = useContext(LocationContext);
 
   const ipURL = 'https://cors-anywhere.herokuapp.com/https://ipapi.co/json/';
-
-  const weatherURL = `http://api.openweathermap.org/data/2.5/onecall?lat=${latLong.latitude}&lon=${latLong.longitude}&units=metric&appid=${ApiKey}`;
+  const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${location.latitude}&lon=${location.longitude}&units=metric&appid=${ApiKey}`;
 
   useEffect(() => {
     fetch(ipURL)
@@ -27,7 +19,7 @@ const Search = () => {
 
         const { city, latitude, longitude } = result;
         console.log({ latitude, longitude });
-        setLatLong({ city, latitude, longitude });
+        setLocation({ city, latitude, longitude });
       })
       .then(() => {
         fetch(weatherURL)
