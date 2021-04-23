@@ -1,6 +1,7 @@
 .result {
   position: absolute;
   bottom: 0;
+  padding: 0 2rem 4rem 6rem;
 
   display: grid;
   grid-template-columns: repeat(2, max-content);

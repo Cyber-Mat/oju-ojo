@@ -1,0 +1,11 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  label {
+  }
+}
+.search .search-input {
+  &:active,
+  &:focus {
+  }
+}

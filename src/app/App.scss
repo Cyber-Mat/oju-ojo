@@ -1,16 +1,15 @@
 .App {
   max-width: 90rem;
   margin: 8rem auto;
-  background-image: linear-gradient(rgba(#fff, 0.1) rgba(#fff, 0.1)),
-    url(../img/rainy.jpg);
+  background-image: linear-gradient(rgba(#eee, 0), rgba(#eee, 0)),
+    url(../img/sunny.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: left;
   box-shadow: var(--shadow-dark);
 
   min-height: 50rem;
 
   display: grid;
   grid-template-columns: 60% 40%;
-  padding: 4rem 10rem 6rem 8rem;
 }
