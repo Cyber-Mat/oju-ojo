@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { IoSearchOutline } from 'react-icons/io5';
+
 import './search.scss';
 
 const Search = () => {
-  const [location, setLocation] = useState('london');
+  const [location, setLocation] = useState('');
   // const URL =
   //   'http://api.ipstack.com/102.89.2.131?access_key=dd40220ecf3f68e68b82ccf505116689';
 
@@ -18,16 +20,22 @@ const Search = () => {
   }, [setLocation]);
 
   return (
-    <form className='search'>
-      <label htmlFor='search-input'>Another location</label>
+    <form className='search' autoComplete='off'>
       <input
         type='text'
         id='search-input'
-        className='search-input'
+        className='search__input'
         value={location}
-        // placeholder='Another location'
+        placeholder='Another location'
         onChange={e => setLocation(e.target.value)}
       />
+      <label className='search__label' htmlFor='search-input'>
+        Another location
+      </label>
+
+      <button className='search__button' type='submit'>
+        <IoSearchOutline />
+      </button>
     </form>
   );
 };

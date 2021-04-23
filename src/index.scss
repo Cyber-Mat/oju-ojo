@@ -5,7 +5,7 @@
     'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 
-  --color-sunny-1: rgba(#669dc4, 1);
+  --color-sunny-1: rgba(#9faf2a, 1);
   --color-sunny-2: rgba(#4f8bb9, 1);
   --color-rainy-1: rgba(#718583, 1);
   --color-rainy-2: rgba(72, 219, 251, 1);
@@ -54,4 +54,17 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+input,
+input:active,
+input:focus,
+button,
+button:active,
+button:focus {
+  outline: 0;
+}
+
+input {
+  border: none;
 }
