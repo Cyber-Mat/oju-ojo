@@ -45,5 +45,11 @@
 
     border: none;
     background-color: rgba(#9faf2a, 1);
+    cursor: pointer;
+
+    transition: all 0.3s;
+    &:active {
+      transform: translateY(-0.5rem);
+    }
   }
 }

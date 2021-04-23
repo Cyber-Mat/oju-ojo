@@ -10,7 +10,7 @@ const Result = () => (
     </h1>
     <div className='exp'>
       <div className='top-div'>
-        <h1 className='location'>London</h1>
+        <h1 className='location'>Ashburn</h1>
         <IoRainyOutline className='icon-res' />
       </div>
       <div className='bottom-div'>
