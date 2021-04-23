@@ -1,0 +1,9 @@
+.location-list {
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(#e6e3e3, 1);
+  p {
+    &:not(:last-of-type) {
+      margin-bottom: 1.5rem;
+    }
+  }
+}
