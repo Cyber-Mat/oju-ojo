@@ -3,9 +3,9 @@ import LocationList from '../location-list/LocationList';
 import './searchPage.scss';
 import Details from '../details/Details';
 
-const SearchPage = () => (
+const SearchPage = ({ cities }) => (
   <div className='search-page'>
-    <Search />
+    <Search cities={cities} />
     <LocationList
       options={['Saki', 'Manchester', 'Ilorin', 'Abule-Egba', 'Kaduna']}
     />

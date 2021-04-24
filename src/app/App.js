@@ -1,16 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.scss';
 import ResultPage from '../result-page/ResultPage';
 import SearchPage from '../search-page/SearchPage';
 import LocationContext from '../utils/LocationContext';
 import WeatherContext from '../utils/WeatherContext';
 
-function App() {
+const App = () => {
   const locationHook = useState({
     latitude: '39.0481',
     longitude: '-77.4728',
     city: 'Ashburn',
   });
+
+  const [cities, setCities] = useState([]);
+
+  useEffect(() => {
+    fetch('https://countriesnow.space/api/v0.1/countries')
+      .then(data => data.json())
+      .then(({ data }) => {
+        setCities(data);
+        console.log(data);
+      })
+      .catch(error => console.log(error));
+  }, [setCities]);
 
   const weatherHook = useState({
     currentWeather: {
@@ -60,11 +72,11 @@ Visibility:
       <LocationContext.Provider value={locationHook}>
         <WeatherContext.Provider value={weatherHook}>
           <ResultPage />
-          <SearchPage />
+          <SearchPage cities={cities} />
         </WeatherContext.Provider>
       </LocationContext.Provider>
     </div>
   );
-}
+};
 
 export default App;
