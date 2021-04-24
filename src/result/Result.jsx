@@ -1,16 +1,21 @@
 import { useContext } from 'react';
-import { IoRainyOutline } from 'react-icons/io5';
 import LocationContext from '../utils/LocationContext';
+import WeatherContext from '../utils/WeatherContext';
+import { IoRainyOutline } from 'react-icons/io5';
 import './result.scss';
 
 // IoSearchOutline;
 
 const Result = () => {
   const [location] = useContext(LocationContext);
+  const [weather] = useContext(WeatherContext);
+  // const currentTime = new Date(weather.currentWeather.dt * 1000);
+  // console.log(currentTime);
+
   return (
     <div className='result'>
       <h1 className='temperature'>
-        08 <sup>O</sup>
+        {Math.round(+weather.currentWeather.temp)} <sup>O</sup>
       </h1>
       <div className='exp'>
         <div className='top-div'>
@@ -21,8 +26,8 @@ const Result = () => {
           <p className='date'>
             <span>06:09</span> <span>Monday, 19 Apr '21</span>
           </p>
-
-          <p className='weather'>Rainy</p>
+          <p className='weather'>{`${weather.currentWeather.weather.main}`}</p>
+          {/* (${weather.currentWeather.weather.description}) */}
         </div>
       </div>
     </div>

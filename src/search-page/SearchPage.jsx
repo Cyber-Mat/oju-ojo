@@ -10,7 +10,7 @@ const SearchPage = () => (
       options={['Saki', 'Manchester', 'Ilorin', 'Abule-Egba', 'Kaduna']}
     />
 
-    {/* <Details /> */}
+    <Details />
   </div>
 );
 

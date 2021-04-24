@@ -1,13 +1,14 @@
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import LocationContext from '../utils/LocationContext';
+import WeatherContext from '../utils/WeatherContext';
 import { IoSearchOutline } from 'react-icons/io5';
 import './search.scss';
 
 const Search = () => {
-  const ApiKey = process.env.REACT_APP_API_KEY;
-
   const [location, setLocation] = useContext(LocationContext);
+  const setWeather = useContext(WeatherContext)[1];
 
+  const ApiKey = process.env.REACT_APP_API_KEY;
   const ipURL = 'https://cors-anywhere.herokuapp.com/https://ipapi.co/json/';
   const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${location.latitude}&lon=${location.longitude}&units=metric&appid=${ApiKey}`;
 
@@ -22,15 +23,28 @@ const Search = () => {
         setLocation({ city, latitude, longitude });
       })
       .then(() => {
-        fetch(weatherURL)
-          .then(data => data.json())
-          .then(result => {
-            console.log(result);
-          })
-          .catch(error => console.log(error));
+        // fetch(weatherURL)
+        //   .then(data => data.json())
+        //   .then(result => {
+        //     console.log(result);
+        //     const { current } = result;
+        //     setWeather({ currentWeather: current });
+        //   })
+        //   .catch(error => console.log(error));
       })
       .catch(error => console.log(error));
-  }, [setLocation]);
+
+    fetch(weatherURL)
+      .then(data => data.json())
+      .then(result => {
+        console.log(result);
+
+        const { current } = result;
+        setWeather({ currentWeather: current });
+      })
+      .catch(error => console.log(error));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setLocation, weatherURL]);
 
   return (
     <form
