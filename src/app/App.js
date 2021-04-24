@@ -22,7 +22,7 @@ function App() {
       pressure: 1018,
       sunrise: 1619259609,
       sunset: 1619308528,
-      temp: 4.07,
+      temp: 16.07,
       uvi: 0,
       visibility: 10000,
       weather: [

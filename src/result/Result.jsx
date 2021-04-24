@@ -26,7 +26,7 @@ const Result = () => {
           <p className='date'>
             <span>06:09</span> <span>Monday, 19 Apr '21</span>
           </p>
-          <p className='weather'>{`${weather.currentWeather.weather.main}`}</p>
+          <p className='weather'>{`${weather.currentWeather.weather[0].main}`}</p>
           {/* (${weather.currentWeather.weather.description}) */}
         </div>
       </div>

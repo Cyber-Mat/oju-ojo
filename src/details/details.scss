@@ -1,0 +1,25 @@
+.details {
+  display: grid;
+  grid-template-rows: 10% 90%;
+  row-gap: 3rem;
+  padding-top: 2rem;
+
+  &__header {
+  }
+  &__content {
+    p {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      &:not(:last-of-type) {
+        margin-bottom: 1.5rem;
+      }
+
+      span {
+        &:last-of-type {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
