@@ -2,8 +2,30 @@
   padding: 2rem 0;
   border-bottom: 1px solid rgba(#e6e3e3, 1);
   p {
+    cursor: pointer;
+    position: relative;
+
     &:not(:last-of-type) {
       margin-bottom: 1.5rem;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 0;
+      transition: all 0.5s;
+      z-index: 100;
+      background-color: rgba(#fff, 0.7);
+    }
+
+    &:hover {
+      &::after {
+        width: 50%;
+      }
     }
   }
 }

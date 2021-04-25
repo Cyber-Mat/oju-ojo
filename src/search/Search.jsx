@@ -8,9 +8,12 @@ const Search = ({ cities }) => {
   const [location, setLocation] = useContext(LocationContext);
   const setWeather = useContext(WeatherContext)[1];
 
-  const ApiKey = process.env.REACT_APP_API_KEY;
-  const ipURL = 'https://cors-anywhere.herokuapp.com/https://ipapi.co/json/';
-  const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${location.latitude}&lon=${location.longitude}&units=metric&appid=${ApiKey}`;
+  const IP_API_KEY = process.env.REACT_APP_IP_API_KEY;
+  const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+  const GEOCODE_API_KEY = process.env.REACT_APP_GEOCODE_API_KEY;
+
+  const ipURL = `https://api.ipgeolocation.iovv/ipgeo?apiKey=${IP_API_KEY}&fields=geo`;
+  const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${location.latitude}&lon=${location.longitude}&units=metric&appid=${WEATHER_API_KEY}`;
 
   useEffect(() => {
     fetch(ipURL)
@@ -19,7 +22,6 @@ const Search = ({ cities }) => {
         console.log(result);
 
         const { city, latitude, longitude } = result;
-        console.log({ latitude, longitude });
         setLocation({ city, latitude, longitude });
       })
       .then(() => {
@@ -39,33 +41,30 @@ const Search = ({ cities }) => {
 
   // useEffect(() => {}, [ApiKey, city, setLocation, setWeather]);
 
-  const [city, setCity] = useState('');
+  // const [city, setCity] = useState('');
 
   const handleSubmit = e => {
     const val = e.target[0].value;
     const value = val.charAt(0).toUpperCase() + val.slice(1);
 
-    cities.map(obj => {
-      obj.cities.forEach((item, i, a) => {
-        if (value === item) {
-          setCity(item);
-          console.log(city);
-        }
-      });
-      return value;
-    });
+    const geoCodeUrl = ` https://geocode.search.hereapi.com/v1/geocode?q=${value}&apiKey=${GEOCODE_API_KEY}`;
 
-    const weatherURL2 = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${ApiKey}`;
-
-    fetch(weatherURL2)
+    fetch(geoCodeUrl)
       .then(data => data.json())
-      .then(result => {
-        console.log(result);
-
-        const { current } = result;
-        setWeather({ currentWeather: current });
-      })
+      .then(result => console.log(result))
       .catch(error => console.log(error));
+
+    // const weatherURL2 = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${WEATHER_API_KEY}`;
+
+    // fetch(weatherURL2)
+    //   .then(data => data.json())
+    //   .then(result => {
+    //     console.log(result);
+
+    //     const { current } = result;
+    //     setWeather({ currentWeather: current });
+    //   })
+    //   .catch(error => console.log(error));
   };
 
   return (
@@ -83,7 +82,24 @@ const Search = ({ cities }) => {
         className='search__input'
         // value={location.city}
         placeholder='Another location'
-        // onChange={e => setLocation({ city: e.target.value })}
+        onChange={e => {
+          const autoSuggestUrl = `https://autocomplete.search.hereapi.com/v1/autocomplete?q=${e.target.value}&apiKey=${GEOCODE_API_KEY}`;
+
+          fetch(autoSuggestUrl)
+            .then(data => data.json())
+            .then(({ items }) => {
+              console.log({ items });
+              const suggestedArr = items.map(item => ({
+                city: item.address.city
+                  ? item.address.city
+                  : item.address.label,
+                country: item.address.countryName,
+              }));
+              console.log(suggestedArr);
+              setLocation({ locationSuggestion: suggestedArr });
+            })
+            .catch(error => console.log(error));
+        }}
         onFocus={e => (e.target.value = '')}
       />
       <label className='search__label' htmlFor='search-input'>

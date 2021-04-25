@@ -10,19 +10,10 @@ const App = () => {
     latitude: '39.0481',
     longitude: '-77.4728',
     city: 'Ashburn',
+    locationSuggestion: [],
   });
 
-  const [cities, setCities] = useState([]);
-
-  useEffect(() => {
-    fetch('https://countriesnow.space/api/v0.1/countries')
-      .then(data => data.json())
-      .then(({ data }) => {
-        setCities(data);
-        console.log(data);
-      })
-      .catch(error => console.log(error));
-  }, [setCities]);
+  //const [cities, setCities] = useState([]);
 
   const weatherHook = useState({
     currentWeather: {
@@ -72,7 +63,7 @@ Visibility:
       <LocationContext.Provider value={locationHook}>
         <WeatherContext.Provider value={weatherHook}>
           <ResultPage />
-          <SearchPage cities={cities} />
+          <SearchPage />
         </WeatherContext.Provider>
       </LocationContext.Provider>
     </div>
