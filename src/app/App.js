@@ -16,35 +16,35 @@ const App = () => {
   const suggestedLocHook = useState({ locationSuggestion: [] });
 
   const weatherHook = useState({
-    currentWeather: {
-      clouds: 1,
-      dew_point: -1.69,
-      dt: 1619250967,
-      feels_like: 2.82,
-      humidity: 65,
-      pressure: 1018,
-      sunrise: 1619259609,
-      sunset: 1619308528,
-      temp: 16.07,
-      uvi: 0,
-      visibility: 10000,
-      weather: [
-        {
-          id: 500,
-          main: 'Rain',
-          description: 'light rain',
-          icon: '10d',
-        },
-      ],
-      rain: {
-        '1h': 0.21,
-      },
-      wind_deg: 281,
-      wind_gust: 1.56,
-      wind_speed: 1.55,
-    },
+    currentWeather: {},
   });
   /**
+   clouds: 1,
+   dew_point: -1.69,
+   dt: 1619250967,
+   feels_like: 2.82,
+   humidity: 65,
+   pressure: 1018,
+   sunrise: 1619259609,
+   sunset: 1619308528,
+   temp: 16.07,
+   uvi: 0,
+   visibility: 10000,
+   weather: [
+     {
+       id: 500,
+       main: 'Rain',
+       description: 'light rain',
+       icon: '10d',
+     },
+   ],
+   rain: {
+     '1h': 0.21,
+   },
+   wind_deg: 281,
+   wind_gust: 1.56,
+   wind_speed: 1.55,
+   
    * 11°C
 Feels like 10°C. Few clouds. Gentle Breeze
  5.1m/s E
