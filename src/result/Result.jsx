@@ -15,7 +15,10 @@ const Result = () => {
   return (
     <div className='result'>
       <h1 className='temperature'>
-        {Math.round(+weather.currentWeather.temp)} <sup>O</sup>
+        {weather.currentWeather.temp
+          ? Math.round(+weather.currentWeather.temp)
+          : Math.round(+weather.currentWeather.main.temp)}
+        <sup>O</sup>
       </h1>
       <div className='exp'>
         <div className='top-div'>

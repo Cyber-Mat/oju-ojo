@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react';
-import './App.scss';
+import { useState } from 'react';
 import ResultPage from '../result-page/ResultPage';
 import SearchPage from '../search-page/SearchPage';
 import LocationContext from '../utils/LocationContext';
+import SuggestedLocContext from '../utils/SuggestedLocContext';
 import WeatherContext from '../utils/WeatherContext';
+import './App.scss';
 
 const App = () => {
   const locationHook = useState({
     latitude: '39.0481',
     longitude: '-77.4728',
     city: 'Ashburn',
-    locationSuggestion: [],
   });
 
-  //const [cities, setCities] = useState([]);
+  const suggestedLocHook = useState({ locationSuggestion: [] });
 
   const weatherHook = useState({
     currentWeather: {
@@ -61,10 +61,12 @@ Visibility:
   return (
     <div className='App'>
       <LocationContext.Provider value={locationHook}>
-        <WeatherContext.Provider value={weatherHook}>
-          <ResultPage />
-          <SearchPage />
-        </WeatherContext.Provider>
+        <SuggestedLocContext.Provider value={suggestedLocHook}>
+          <WeatherContext.Provider value={weatherHook}>
+            <ResultPage />
+            <SearchPage />
+          </WeatherContext.Provider>
+        </SuggestedLocContext.Provider>
       </LocationContext.Provider>
     </div>
   );

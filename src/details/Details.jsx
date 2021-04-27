@@ -8,14 +8,32 @@ const Details = () => {
     <div className='details'>
       <h3 className='details__header'>Weather Details</h3>
       <div className='details__content'>
-        {/* <p>
-        <span>Cloudiness <span>12%</span>
-      </p> */}
         <p>
-          <span>Humidity</span> <span>{currentWeather.humidity}%</span>
+          <span>Pressure</span>{' '}
+          <span>
+            {currentWeather.pressure
+              ? currentWeather.pressure
+              : currentWeather.main.pressure}
+            hPa
+          </span>
         </p>
         <p>
-          <span>Wind</span> <span>{currentWeather.wind_speed}m/s</span>
+          <span>Humidity</span>
+          <span>
+            {currentWeather.humidity
+              ? currentWeather.humidity
+              : currentWeather.main.humidity}
+            %
+          </span>
+        </p>
+        <p>
+          <span>Wind</span>
+          <span>
+            {currentWeather.wind_speed
+              ? currentWeather.wind_speed
+              : currentWeather.wind.speed}
+            m/s
+          </span>
         </p>
         <p>
           <span>Visibility</span>
@@ -24,13 +42,13 @@ const Details = () => {
         {/* <p>
         <span>Pressure</span> <span>1029hPa</span>
       </p> */}
-        <p>
+        {/* <p>
           <span>Dew point</span>
           <span>
             {Math.round(+currentWeather.dew_point)}
             <sup>0</sup>C
           </span>
-        </p>
+        </p> */}
         {/* <p>
         <span>UV</span>
         <span>1</span>

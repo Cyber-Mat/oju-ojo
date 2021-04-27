@@ -1,9 +1,11 @@
 .location-list {
   padding: 2rem 0;
+  overflow: hidden;
   border-bottom: 1px solid rgba(#e6e3e3, 1);
   p {
     cursor: pointer;
     position: relative;
+    transition: all 0.3s;
 
     &:not(:last-of-type) {
       margin-bottom: 1.5rem;
@@ -28,4 +30,8 @@
       }
     }
   }
+}
+
+.skeleton {
+  object-fit: cover;
 }
