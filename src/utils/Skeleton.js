@@ -31,7 +31,7 @@ export const ResultSkeleton = props => (
     width={400}
     height={160}
     viewBox='0 0 400 160'
-    backgroundColor='rgba(256,256,256, .1)'
+    backgroundColor='rgba(256,256,256, .2)'
     foregroundColor='rgba(4,4,4, .1)'
     {...props}
   >

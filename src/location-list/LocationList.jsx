@@ -26,7 +26,10 @@ const LocationList = () => {
         setWeather({ currentWeather: current });
         console.log(weather);
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        // console.log(error);
+        setWeather({ currentWeather: 'error' });
+      });
   };
 
   if (

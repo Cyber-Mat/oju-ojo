@@ -19,6 +19,17 @@ const Result = () => {
         <ResultSkeleton />
       </div>
     );
+  } else if (
+    weather.currentWeather === 'error' ||
+    weather.currentWeather.message
+  ) {
+    return (
+      <div className='result'>
+        <h1>Weather for location not found</h1>
+        <br />
+        <h1>Please try another location</h1>
+      </div>
+    );
   } else {
     return (
       <div className='result'>

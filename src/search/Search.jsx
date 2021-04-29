@@ -4,7 +4,6 @@ import WeatherContext from '../utils/WeatherContext';
 import SuggestedLocContext from '../utils/SuggestedLocContext';
 import { IoSearchOutline } from 'react-icons/io5';
 import './search.scss';
-import Skeleton from '../utils/Skeleton';
 
 const Search = ({ cities }) => {
   const [location, setLocation] = useContext(LocationContext);

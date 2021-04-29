@@ -5,7 +5,11 @@ import './details.scss';
 const Details = () => {
   const [{ currentWeather }] = useContext(WeatherContext);
 
-  if (currentWeather === '') {
+  if (
+    currentWeather === '' ||
+    currentWeather === 'error' ||
+    currentWeather.cod
+  ) {
     return (
       <div className='details'>
         <h3 className='details__header'>Weather Details</h3>
@@ -29,7 +33,6 @@ const Details = () => {
       </div>
     );
   } else {
-    console.log(currentWeather);
     return (
       <div className='details'>
         <h3 className='details__header'>Weather Details</h3>
