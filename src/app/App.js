@@ -16,7 +16,7 @@ const App = () => {
   const suggestedLocHook = useState({ locationSuggestion: [] });
 
   const weatherHook = useState({
-    currentWeather: {},
+    currentWeather: '',
   });
   /**
    clouds: 1,

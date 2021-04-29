@@ -3,12 +3,9 @@ import WeatherContext from '../utils/WeatherContext';
 import './details.scss';
 
 const Details = () => {
-  const [weather] = useContext(WeatherContext);
+  const [{ currentWeather }] = useContext(WeatherContext);
 
-  if (
-    !weather.currentWeather.current ||
-    weather.currentWeather.current === ''
-  ) {
+  if (currentWeather === '') {
     return (
       <div className='details'>
         <h3 className='details__header'>Weather Details</h3>
@@ -32,40 +29,41 @@ const Details = () => {
       </div>
     );
   } else {
+    console.log(currentWeather);
     return (
       <div className='details'>
         <h3 className='details__header'>Weather Details</h3>
         <div className='details__content'>
           <p>
-            <span>Pressure</span>{' '}
+            <span>Pressure</span>
             <span>
-              {weather.currentWeather.pressure
-                ? weather.currentWeather.pressure
-                : weather.currentWeather.main.pressure}
+              {currentWeather.pressure
+                ? currentWeather.pressure
+                : currentWeather.main.pressure}
               hPa
             </span>
           </p>
           <p>
             <span>Humidity</span>
             <span>
-              {weather.currentWeather.humidity
-                ? weather.currentWeather.humidity
-                : weather.currentWeather.main.humidity}
+              {currentWeather.humidity
+                ? currentWeather.humidity
+                : currentWeather.main.humidity}
               %
             </span>
           </p>
           <p>
             <span>Wind</span>
             <span>
-              {weather.currentWeather.wind_speed
-                ? weather.currentWeather.wind_speed
-                : weather.currentWeather.wind.speed}
+              {currentWeather.wind_speed
+                ? currentWeather.wind_speed
+                : currentWeather.wind.speed}
               m/s
             </span>
           </p>
           <p>
             <span>Visibility</span>
-            <span>{weather.currentWeather.visibility / 1000}km</span>
+            <span>{currentWeather.visibility / 1000}km</span>
           </p>
           {/* <p>
         <span>Pressure</span> <span>1029hPa</span>
@@ -73,7 +71,7 @@ const Details = () => {
           {/* <p>
           <span>Dew point</span>
           <span>
-            {Math.round(+weather.currentWeather.dew_point)}
+            {Math.round(+currentWeather.dew_point)}
             <sup>0</sup>C
           </span>
         </p> */}

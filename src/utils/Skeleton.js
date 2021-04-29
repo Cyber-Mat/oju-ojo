@@ -1,6 +1,6 @@
 import ContentLoader from 'react-content-loader';
 
-const Skeleton = props => {
+export const LocationSkeleton = props => {
   return (
     <ContentLoader
       // height={200}
@@ -25,4 +25,18 @@ const Skeleton = props => {
   );
 };
 
-export default Skeleton;
+export const ResultSkeleton = props => (
+  <ContentLoader
+    speed={2}
+    width={400}
+    height={160}
+    viewBox='0 0 400 160'
+    backgroundColor='rgba(256,256,256, .1)'
+    foregroundColor='rgba(4,4,4, .1)'
+    {...props}
+  >
+    <rect x='28' y='84' rx='3' ry='3' width='235' height='25' />
+    <circle cx='307' cy='103' r='27' />
+    <rect x='46' y='118' rx='3' ry='3' width='178' height='7' />
+  </ContentLoader>
+);

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import LocationContext from '../utils/LocationContext';
-import Skeleton from '../utils/Skeleton';
+import { LocationSkeleton } from '../utils/Skeleton';
 import SuggestedLocContext from '../utils/SuggestedLocContext';
 import WeatherContext from '../utils/WeatherContext';
 import './locationList.scss';
@@ -14,7 +14,7 @@ const LocationList = () => {
   const handleClick = e => {
     const locArr = e.target.textContent.split(',');
     setLocation({ city: locArr[0] });
-    setWeather({ currentWeather: { current: '' } });
+    setWeather({ currentWeather: '' });
     const weatherURL2 = `https://api.openweathermap.org/data/2.5/weather?q=${locArr[0]}&units=metric&appid=${WEATHER_API_KEY}`;
 
     fetch(weatherURL2)
@@ -45,7 +45,7 @@ const LocationList = () => {
   } else if (suggestedLoc.locationSuggestion[0] === 'load') {
     return (
       <div className='location-list'>
-        <Skeleton className='skeleton' />
+        <LocationSkeleton />
       </div>
     );
   }

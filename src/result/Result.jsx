@@ -3,7 +3,7 @@ import LocationContext from '../utils/LocationContext';
 import WeatherContext from '../utils/WeatherContext';
 import { IoRainyOutline } from 'react-icons/io5';
 import './result.scss';
-import Skeleton from '../utils/Skeleton';
+import { ResultSkeleton } from '../utils/Skeleton';
 
 // IoSearchOutline;
 
@@ -13,7 +13,13 @@ const Result = () => {
   // const currentTime = new Date(weather.currentWeather.dt * 1000);
   // console.log(currentTime);
 
-  if (weather.currentWeather > 0) {
+  if (weather.currentWeather === '') {
+    return (
+      <div className='result'>
+        <ResultSkeleton />
+      </div>
+    );
+  } else {
     return (
       <div className='result'>
         <h1 className='temperature'>
@@ -35,12 +41,6 @@ const Result = () => {
             {/* (${weather.currentWeather.weather.description}) */}
           </div>
         </div>
-      </div>
-    );
-  } else {
-    return (
-      <div className='result'>
-        <Skeleton />
       </div>
     );
   }
