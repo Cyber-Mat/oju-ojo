@@ -46,11 +46,11 @@ const Result = () => {
   ) {
     return (
       <div className='result'>
-        <h1>Weather for location not found</h1>
+        <h2>Weather for location not found</h2>
         <br />
-        <h1>Please try another location</h1>
+        <h2>Please try another location</h2>
         <br />
-        <h1>or check your internet connection </h1>
+        <h2>or check your internet connection </h2>
       </div>
     );
   } else {

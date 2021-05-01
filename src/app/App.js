@@ -4,7 +4,9 @@ import SearchPage from '../search-page/SearchPage';
 import LocationContext from '../utils/LocationContext';
 import SuggestedLocContext from '../utils/SuggestedLocContext';
 import WeatherContext from '../utils/WeatherContext';
+
 import './App.scss';
+import Background from '../background/Background';
 
 const App = () => {
   const locationHook = useState({
@@ -18,6 +20,7 @@ const App = () => {
   const weatherHook = useState({
     currentWeather: '',
   });
+
   /**
    clouds: 1,
    dew_point: -1.69,
@@ -58,11 +61,13 @@ Dew point:
 Visibility:
 10.0km
    */
+
   return (
     <div className='App'>
       <LocationContext.Provider value={locationHook}>
         <SuggestedLocContext.Provider value={suggestedLocHook}>
           <WeatherContext.Provider value={weatherHook}>
+            <Background />
             <ResultPage />
             <SearchPage />
           </WeatherContext.Provider>

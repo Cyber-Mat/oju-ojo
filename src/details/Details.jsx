@@ -8,7 +8,7 @@ const Details = () => {
   if (
     currentWeather === '' ||
     currentWeather === 'error' ||
-    currentWeather.cod
+    currentWeather.message
   ) {
     return (
       <div className='details'>

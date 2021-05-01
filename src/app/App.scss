@@ -1,11 +1,7 @@
 .App {
+  position: relative;
   max-width: 90rem;
   margin: 8rem auto;
-  background-image: linear-gradient(rgba(#000, 0), rgba(#000, 0)),
-    url(../img/sunny.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: left;
   box-shadow: var(--shadow-dark);
 
   min-height: 50rem;
