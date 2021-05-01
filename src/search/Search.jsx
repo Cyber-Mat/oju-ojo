@@ -34,9 +34,15 @@ const Search = ({ cities }) => {
             const { current } = result;
             setWeather({ currentWeather: current });
           })
-          .catch(error => console.log(error));
+          .catch(error => {
+            console.log(error);
+            setWeather({ currentWeather: 'error' });
+          });
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.log(error);
+        setWeather({ currentWeather: 'error' });
+      });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
